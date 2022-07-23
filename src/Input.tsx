@@ -5,9 +5,17 @@ import { CSV2Struct } from "./CSV2Struct";
 
 export const Input: React.FC<{}> = () => {
 	const [value, setValue] = useState<string>('');
+	const [isError, setError] = useState<boolean>(false);
 
 	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		setValue(CSV2Struct(e.target.value))
+		const res = CSV2Struct(e.target.value)
+		setError(false)
+		setValue(res.struct)
+
+		if (res.error) {
+			setError(true)
+			setValue(res.error.message)
+		}
 	}
 
 	return (
@@ -15,7 +23,9 @@ export const Input: React.FC<{}> = () => {
 			<TBody>
 				<Tr>
 					<Td><InputTextArea name='input' placeholder="Paste CSV here" onChange={handleChange}></InputTextArea></Td>
-					<Td><OutputTextArea name='output' placeholder="Go will appear here" value={value} readOnly></OutputTextArea></Td>
+					<Td>
+						<OutputTextArea name='output' placeholder="Go will appear here" value={value} readOnly isError={isError}></OutputTextArea>
+					</Td>
 				</Tr>
 			</TBody>
 		</Table >
@@ -47,8 +57,9 @@ background: #ECF2F5;
 border-right: 2px solid #AAA;
 `
 
-const OutputTextArea = styled(TextArea)`
+const OutputTextArea = styled(TextArea) <{ isError: boolean }>`
 background: #E0EBF5;
+color: ${({ isError }) => isError ? '#FF0000' : '#000000'};
 `
 
 const Td = styled.td`
