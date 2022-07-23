@@ -6,15 +6,14 @@ type column = {
 }
 
 export const CSV2Struct = (csvText: string): string => {
-	if (csvText) {
+	if (!csvText) {
+		console.log('input is null')
 		return ''
 	}
 
 	const res = parse(csvText, {
 		dynamicTyping: true,
 	});
-
-	console.log(res)
 
 	if (res.errors.length > 0) {
 		return `CSV Parse error.`
