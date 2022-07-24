@@ -1,5 +1,6 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
+import { Header } from './Header';
 import { Input } from './Input';
 
 const App: React.FC = () => {
@@ -12,6 +13,7 @@ const App: React.FC = () => {
           <h2>Convert CSV to Go struct</h2>
         </div>
       </header>
+      <Header />
       <Input />
       <footer>
         &bull; <a href="https://github.com/d-tsuji/csv-to-go">View on GitHub</a><br></br>

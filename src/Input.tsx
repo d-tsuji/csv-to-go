@@ -6,10 +6,9 @@ import { CSV2Struct } from "./CSV2Struct";
 export const Input: React.FC<{}> = () => {
 	const [value, setValue] = useState<string>('');
 	const [isError, setError] = useState<boolean>(false);
-	const [separator, setSeparator] = useState<string>(',')
 
 	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		const res = CSV2Struct(e.target.value, separator)
+		const res = CSV2Struct(e.target.value)
 		setError(false)
 		setValue(res.struct)
 
@@ -24,54 +23,17 @@ export const Input: React.FC<{}> = () => {
 		navigator.clipboard.writeText(value)
 	}
 
-	const handleSelectSeparator = (e: any) => {
-		setSeparator(e.target.value)
-	}
-
-	// Prevent escaping to become \\t
-	const tab = '\t'
 	return (
-		<>
-			<Table>
-				<TBody>
-					<Tr>
-						<SideTh>CSV
-							<Labels><br></br>(select separator:
-								<Label>
-									,
-									<input type='radio' id='comma' name='comma' value=',' onChange={handleSelectSeparator} checked={separator === ','}></input>
-								</Label>
-								<Label>
-									\t
-									<input type='radio' id='tab' name='tab' value={tab} onChange={handleSelectSeparator} checked={separator === '\t'}></input>
-								</Label>
-								<Label>
-									|
-									<input type='radio' id='pipe' name='pipe' value='|' onChange={handleSelectSeparator} checked={separator === '|'}></input>
-								</Label>
-								<Label>
-									;
-									<input type='radio' id='semicolon' name='semicolon' value=';' onChange={handleSelectSeparator} checked={separator === ';'}></input>
-								</Label>
-								)
-							</Labels>
-						</SideTh>
-						<CenterTh>&#8594;</CenterTh>
-						<SideTh>Go</SideTh>
-					</Tr>
-				</TBody>
-			</Table >
-			<Table>
-				<TBody>
-					<Tr>
-						<Td><InputTextArea name='input' placeholder="Paste CSV here" onChange={handleChange}></InputTextArea></Td>
-						<Td>
-							<OutputTextArea name='output' placeholder="Go will appear here" value={value} onClick={handleCopy} readOnly isError={isError}></OutputTextArea>
-						</Td>
-					</Tr>
-				</TBody>
-			</Table >
-		</>
+		<Table>
+			<TBody>
+				<Tr>
+					<Td><InputTextArea name='input' placeholder="Paste CSV here" onChange={handleChange}></InputTextArea></Td>
+					<Td>
+						<OutputTextArea name='output' placeholder="Go will appear here" value={value} onClick={handleCopy} readOnly isError={isError}></OutputTextArea>
+					</Td>
+				</Tr>
+			</TBody>
+		</Table >
 	);
 }
 
@@ -108,33 +70,4 @@ color: ${({ isError }) => isError ? '#FF0000' : '#000000'};
 const Td = styled.td`
 width: 50%;
 vertical-align: top;
-`
-
-const Th = styled.th`
-font: inherit;
-padding: 15px;
-background: #375EAB;
-text-align: center;
-color: #FFF;
-font-size: 20px;
-`
-
-const SideTh = styled(Th)`
-font-weight: bold;
-width: 45%
-`
-
-const CenterTh = styled(Th)`
-width: 10%
-`
-
-const Label = styled.label`
-color: #FFF;
-margin-left: 6px;
-`
-
-const Labels = styled.div`
-margin-top: -16px;
-font-weight: lighter;
-font-size: 16px;
 `
