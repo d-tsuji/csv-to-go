@@ -24,16 +24,27 @@ export const Input: React.FC<{}> = () => {
 	}
 
 	return (
-		<Table>
-			<TBody>
-				<Tr>
-					<Td><InputTextArea name='input' placeholder="Paste CSV here" onChange={handleChange}></InputTextArea></Td>
-					<Td>
-						<OutputTextArea name='output' placeholder="Go will appear here" value={value} onClick={handleCopy} readOnly isError={isError}></OutputTextArea>
-					</Td>
-				</Tr>
-			</TBody>
-		</Table >
+		<>
+			<Table>
+				<TBody>
+					<Tr>
+						<SideTh>CSV</SideTh>
+						<CenterTh>&#8594;</CenterTh>
+						<SideTh>Go</SideTh>
+					</Tr>
+				</TBody>
+			</Table >
+			<Table>
+				<TBody>
+					<Tr>
+						<Td><InputTextArea name='input' placeholder="Paste CSV here" onChange={handleChange}></InputTextArea></Td>
+						<Td>
+							<OutputTextArea name='output' placeholder="Go will appear here" value={value} onClick={handleCopy} readOnly isError={isError}></OutputTextArea>
+						</Td>
+					</Tr>
+				</TBody>
+			</Table >
+		</>
 	);
 }
 
@@ -71,3 +82,21 @@ const Td = styled.td`
 width: 50%;
 vertical-align: top;
 `
+
+const Th = styled.th`
+font: inherit;
+padding: 15px;
+background: #375EAB;
+text-align: center;
+color: #FFF;
+font-size: 20px;
+`
+
+const SideTh = styled(Th)`
+width: 45%
+`
+
+const CenterTh = styled(Th)`
+width: 10%
+`
+
