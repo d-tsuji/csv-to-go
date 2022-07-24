@@ -12,12 +12,13 @@ type result = {
 
 const csvParseError = new Error('CSV parse error.')
 
-export const CSV2Struct = (csvText: string): result => {
+export const CSV2Struct = (csvText: string, separator: string): result => {
 	if (!csvText) {
 		return { struct: '' }
 	}
 
 	const res = parse(csvText, {
+		delimiter: separator,
 		dynamicTyping: true,
 	});
 
