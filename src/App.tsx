@@ -16,6 +16,7 @@ const App: React.FC = () => {
       <Header />
       <Input />
       <footer>
+        &bull; <a href="https://github.com/d-tsuji/csv-to-go">View on GitHub</a><br></br>
         &copy; 2022 Tsuji Daishiro<br></br>
       </footer>
     </>
