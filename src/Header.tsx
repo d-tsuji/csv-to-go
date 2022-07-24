@@ -16,6 +16,7 @@ export const Header: React.FC<{}> = () => {
 }
 
 const Th = styled.th`
+font: inherit;
 padding: 15px;
 background: #375EAB;
 text-align: center;

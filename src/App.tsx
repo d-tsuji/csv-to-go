@@ -31,6 +31,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
+    font: inherit;
     font-size: 34px;
     font-weight: bold;
     line-height: 1.5em;
@@ -38,6 +39,7 @@ const GlobalStyles = createGlobalStyle`
   }
   
   h2 {
+    font: inherit;
     font-size: 24px;
     line-height: 1.3em;
     display: flex;
