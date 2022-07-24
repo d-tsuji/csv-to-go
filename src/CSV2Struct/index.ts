@@ -87,7 +87,9 @@ const goType = (val: any): string => {
 
 	switch (typeof val) {
 		case 'string':
-			if (/\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(\+\d\d:\d\d|Z)/.test(val))
+		case 'object':
+			// time objects are matched using papaparse-converted strings
+			if (/(Sun|Mon|Tue|Wed|Thu|Fri|Sat)\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{2}\s+\d{4}\s+\d{2}:\d{2}:\d{2}/.test(val))
 				return 'time.Time';
 			else
 				return 'string';
@@ -102,10 +104,6 @@ const goType = (val: any): string => {
 				return 'float64';
 		case 'boolean':
 			return 'bool';
-		case 'object':
-			if (Array.isArray(val))
-				return 'slice';
-			return 'struct';
 		default:
 			return 'interface{}';
 	}
