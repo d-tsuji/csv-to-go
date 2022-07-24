@@ -15,6 +15,9 @@ const App: React.FC = () => {
       </header>
       <Header />
       <Input />
+      <footer>
+        &copy; 2022 Tsuji Daishiro<br></br>
+      </footer>
     </>
   );
 }
@@ -28,6 +31,7 @@ const GlobalStyles = createGlobalStyle`
 
   header {
     padding-left: 1.5em;
+    text-align:center;
   }
 
   h1 {
@@ -35,13 +39,18 @@ const GlobalStyles = createGlobalStyle`
     font-size: 34px;
     font-weight: bold;
     line-height: 1.5em;
-    display: flex;
   }
   
   h2 {
     font: inherit;
     font-size: 24px;
     line-height: 1.3em;
-    display: flex;
+  }
+
+  footer {
+    color: #888;
+    text-align: right;
+    padding: 25px 25px 50px;
+    line-height: 2em;
   }
 `;
