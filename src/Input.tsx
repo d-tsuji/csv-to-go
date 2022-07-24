@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Table, TBody, Tr } from "./CommonStyled";
 import { CSV2Struct } from "./CSV2Struct";
@@ -18,13 +18,18 @@ export const Input: React.FC<{}> = () => {
 		}
 	}
 
+	const handleCopy = (e: any) => {
+		e.target.select()
+		navigator.clipboard.writeText(value)
+	}
+
 	return (
 		<Table>
 			<TBody>
 				<Tr>
 					<Td><InputTextArea name='input' placeholder="Paste CSV here" onChange={handleChange}></InputTextArea></Td>
 					<Td>
-						<OutputTextArea name='output' placeholder="Go will appear here" value={value} readOnly isError={isError}></OutputTextArea>
+						<OutputTextArea name='output' placeholder="Go will appear here" value={value} onClick={handleCopy} readOnly isError={isError}></OutputTextArea>
 					</Td>
 				</Tr>
 			</TBody>
