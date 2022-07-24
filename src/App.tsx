@@ -30,7 +30,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   header {
-    padding-left: 1.5em;
     text-align:center;
   }
 
