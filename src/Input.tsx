@@ -28,7 +28,7 @@ export const Input: React.FC<{}> = () => {
 			<Table>
 				<TBody>
 					<Tr>
-						<SideTh>CSV</SideTh>
+						<SideTh>CSV<Note><br></br>CSV-to-Go selects a suitable separator</Note></SideTh>
 						<CenterTh>&#8594;</CenterTh>
 						<SideTh>Go</SideTh>
 					</Tr>
@@ -93,6 +93,7 @@ font-size: 20px;
 `
 
 const SideTh = styled(Th)`
+font-weight: bold;
 width: 45%
 `
 
@@ -100,3 +101,8 @@ const CenterTh = styled(Th)`
 width: 10%
 `
 
+const Note = styled.div`
+margin-top: -16px;
+font-weight: lighter;
+font-size: 14px;
+`
