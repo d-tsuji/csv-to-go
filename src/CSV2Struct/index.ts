@@ -30,14 +30,14 @@ export const CSV2Struct = (csvText: string): result => {
 	const columnCount = Object.keys(columnRow).length
 	let columns: column[] = new Array(columnCount)
 
-	Object.values(columnRow).map((field, i) => {
+	Object.values(columnRow).forEach((field, i, _) => {
 		columns[i] = { fieldName: field as string, fieldType: '' }
 	})
 
-	res.data.map((r, i) => {
+	res.data.forEach((r, i, _) => {
 		if (i === 0) return
 
-		Object.values(r as object).map((v, j) => {
+		Object.values(r as object).forEach((v, j, _) => {
 			if (columnCount <= j) return
 
 			const typ = goType(v)
