@@ -1,0 +1,25 @@
+{
+	"preset": "ts-jest/presets/default-esm",
+	"moduleFileExtensions": [
+		"ts",
+		"tsx",
+		"js",
+		"jsx"
+	],
+	"transform": {
+		"\\.jsx?$": "ts-jest",
+		"\\.tsx?$": "ts-jest"
+	},
+	"testMatch": [
+		"**/*.test.ts"
+	],
+	"globals": {
+		"ts-jest": {
+			"tsConfig": "tsconfig.json",
+			"useESM": true
+		}
+	},
+	"transformIgnorePatterns": [
+		"/node_modules/?!(camelcase)"
+	]
+}

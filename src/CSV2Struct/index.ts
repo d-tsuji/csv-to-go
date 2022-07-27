@@ -1,3 +1,4 @@
+import camelcase from "camelcase";
 import { parse } from "papaparse";
 
 type column = {
@@ -66,8 +67,8 @@ export const CSV2Struct = (csvText: string): result => {
 
 	try {
 		for (const value of columns) {
-			const x = value.fieldName
-			output = output.concat(`\t${x.charAt(0).toUpperCase() + x.substring(1)} ${value.fieldType} \`csv:"${value.fieldName}"\``)
+			const x = camelcase(value.fieldName, { pascalCase: true });
+			output = output.concat(`\t${x} ${value.fieldType} \`csv:"${value.fieldName}"\``)
 			output = output.concat('\n')
 		}
 	} catch (e) {
